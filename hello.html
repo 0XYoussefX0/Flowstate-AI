@@ -1,8 +1,48 @@
 <html>
   <head>
     <link rel="stylesheet" href="./output.css" />
+    <script src="./script.js" defer></script>
   </head>
-  <body>
-    <h1 class="text-xl text-red-500">Hello Extensions</h1>
+  <body class="flex flex-col bg-light-blue w-[360px] ">
+    <div class="flex gap-2 items-center px-7 py-6">
+         <img src="./icon.png" alt="flowstate's logo" width="30" height="30"/>
+         <div class="text-dark-grey text-sm font-medium">Flowstate AI</div>
+    </div>
+    <h1 class="text-dark-grey text-sm font-medium px-7">Your Goals From Watching Youtube:</h1>
+    <ul class="px-3 py-4">
+      <li class="flex items-center gap-5 font-semibold text-sm text-dark-grey item-list hover:text-blackish px-5 py-4 hover:bg-blue-sky rounded-full">
+        <div class="bg-dark-grey h-3 w-3 rounded-full"></div>
+        Label
+      </li>
+      <li class="flex items-center gap-5 font-semibold text-sm text-dark-grey item-list hover:text-blackish px-5 py-4 hover:bg-blue-sky rounded-full">
+        <div class="bg-dark-grey h-3 w-3 rounded-full"></div>
+        Label
+      </li>
+      <li class="flex items-center gap-5 font-semibold text-sm text-dark-grey item-list hover:text-blackish px-5 py-4 hover:bg-blue-sky rounded-full">
+        <div class="bg-dark-grey h-3 w-3 rounded-full"></div>
+        Label
+      </li>
+      <li class="flex items-center gap-5 font-semibold text-sm text-dark-grey item-list hover:text-blackish px-5 py-4 hover:bg-blue-sky rounded-full">
+        <div class="bg-dark-grey h-3 w-3 rounded-full"></div>
+        Label
+      </li>
+      <div class="h-[1px] bg-[#C1C7CE] mx-4"></div>
+    </ul>
+    <!-- this switch code was taken from the W3C -->
+    <div class="flex justify-end px-3 pb-6">
+      <div role="switch"
+      id="switch"
+      class="flex gap-2.5 items-center"
+      aria-checked="false"
+      tabindex="0">
+   <span class="text-dark-grey text-sm font-medium">
+     Toggle Shorts
+   </span>
+   <span class="switch">
+     <span></span>
+   </span>
+ </div>
+    </div>
+ 
   </body>
 </html>

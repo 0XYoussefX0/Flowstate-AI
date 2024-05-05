@@ -16,7 +16,7 @@
   /* 2 */
   border-style: solid;
   /* 2 */
-  border-color: #e5e7eb;
+  border-color: currentColor;
   /* 2 */
 }
 
@@ -446,6 +446,100 @@ video {
   display: none;
 }
 
+/* roboto-300 - latin */
+
+@font-face {
+  font-display: swap;
+
+  /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+
+  font-family: 'Roboto';
+
+  font-style: normal;
+
+  font-weight: 300;
+
+  src: url('../fonts/roboto-v30-latin-300.woff2') format('woff2');
+
+  /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* roboto-regular - latin */
+
+@font-face {
+  font-display: swap;
+
+  /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+
+  font-family: 'Roboto';
+
+  font-style: normal;
+
+  font-weight: 400;
+
+  src: url('../fonts/roboto-v30-latin-regular.woff2') format('woff2');
+
+  /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* roboto-500 - latin */
+
+@font-face {
+  font-display: swap;
+
+  /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+
+  font-family: 'Roboto';
+
+  font-style: normal;
+
+  font-weight: 500;
+
+  src: url('../fonts/roboto-v30-latin-500.woff2') format('woff2');
+
+  /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* roboto-700 - latin */
+
+@font-face {
+  font-display: swap;
+
+  /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+
+  font-family: 'Roboto';
+
+  font-style: normal;
+
+  font-weight: 700;
+
+  src: url('../fonts/roboto-v30-latin-700.woff2') format('woff2');
+
+  /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* roboto-900 - latin */
+
+@font-face {
+  font-display: swap;
+
+  /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+
+  font-family: 'Roboto';
+
+  font-style: normal;
+
+  font-weight: 900;
+
+  src: url('../fonts/roboto-v30-latin-900.woff2') format('woff2');
+
+  /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+body {
+  font-family: 'Roboto';
+}
+
 *, ::before, ::after {
   --tw-border-spacing-x: 0;
   --tw-border-spacing-y: 0;
@@ -554,12 +648,163 @@ video {
   --tw-contain-style:  ;
 }
 
-.text-xl {
-  font-size: 1.25rem;
-  line-height: 1.75rem;
+.mx-4 {
+  margin-left: 1rem;
+  margin-right: 1rem;
 }
 
-.text-red-500 {
+.flex {
+  display: flex;
+}
+
+.h-3 {
+  height: 0.75rem;
+}
+
+.h-\[1px\] {
+  height: 1px;
+}
+
+.w-3 {
+  width: 0.75rem;
+}
+
+.w-\[360px\] {
+  width: 360px;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.justify-end {
+  justify-content: flex-end;
+}
+
+.gap-2 {
+  gap: 0.5rem;
+}
+
+.gap-2\.5 {
+  gap: 0.625rem;
+}
+
+.gap-5 {
+  gap: 1.25rem;
+}
+
+.rounded-full {
+  border-radius: 9999px;
+}
+
+.bg-\[\#C1C7CE\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(193 199 206 / var(--tw-bg-opacity));
+}
+
+.bg-dark-grey {
+  --tw-bg-opacity: 1;
+  background-color: rgb(65 71 77 / var(--tw-bg-opacity));
+}
+
+.bg-light-blue {
+  --tw-bg-opacity: 1;
+  background-color: rgb(241 244 249 / var(--tw-bg-opacity));
+}
+
+.px-3 {
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+}
+
+.px-5 {
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+
+.px-7 {
+  padding-left: 1.75rem;
+  padding-right: 1.75rem;
+}
+
+.py-4 {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.py-6 {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
+.pb-6 {
+  padding-bottom: 1.5rem;
+}
+
+.text-sm {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+.font-medium {
+  font-weight: 500;
+}
+
+.font-semibold {
+  font-weight: 600;
+}
+
+.text-dark-grey {
   --tw-text-opacity: 1;
-  color: rgb(239 68 68 / var(--tw-text-opacity));
+  color: rgb(65 71 77 / var(--tw-text-opacity));
+}
+
+.item-list:hover > div {
+  background-color: #0C1D29;
+}
+
+[role="switch"] {
+  cursor: pointer;
+}
+
+[role="switch"] .switch {
+  position: relative;
+  border-radius: 100px;
+  height: 32px;
+  width: 52px;
+  background-color: rgba(29, 27, 32, 12%);
+  transition: background-color 0.1s ease-in;
+}
+
+[role="switch"] .switch span {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  height: 24px;
+  width: 24px;
+  border-radius: 1000px;
+  background: white;
+  transition: left 0.1s ease-in;
+}
+
+[role="switch"][aria-checked="true"] .switch {
+  background-color: #256489;
+}
+
+[role="switch"][aria-checked="true"] .switch span {
+  left: 24px;
+}
+
+.hover\:bg-blue-sky:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(211 229 245 / var(--tw-bg-opacity));
+}
+
+.hover\:text-blackish:hover {
+  --tw-text-opacity: 1;
+  color: rgb(12 29 41 / var(--tw-text-opacity));
 }
