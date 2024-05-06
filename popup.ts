@@ -1,4 +1,29 @@
 (async () => {
+  const inputContainer = document.getElementById("inputContainer");
+  const input = document.getElementById("goal") as HTMLTextAreaElement;
+  const saveButton = document.getElementById("saveButton") as HTMLButtonElement;
+  const editButton = document.getElementById("editButton") as HTMLButtonElement;
+
+  if (editButton) {
+    editButton.addEventListener("click", () => {
+      input.disabled = false;
+      saveButton.disabled = false;
+      if (inputContainer) {
+        inputContainer.removeEventListener("mouseenter", showEditButton);
+      }
+      editButton.style.visibility = "hidden";
+    });
+  }
+
+  chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+    if (request.action === "send user input") {
+      if (input) {
+        console.log(input.value, "oga bonga");
+        sendResponse(input.value);
+      }
+    }
+  });
+
   const switchElement = document.getElementById("switch");
 
   /* some of the switch related code was also part of the code that i've copied from w3c and i've modified it */
@@ -36,6 +61,24 @@
     switchElement.addEventListener("keydown", (e) => {
       if (e.key === "Enter" || e.key === " ") {
         toggleSwitch();
+      }
+    });
+  }
+
+  const showEditButton = () => {
+    if (editButton) {
+      editButton.style.visibility = "visible";
+    }
+  };
+
+  if (saveButton) {
+    saveButton.addEventListener("click", (e) => {
+      e.preventDefault();
+      chrome.storage.local.set({ textInput: input.value });
+      input.disabled = true;
+      saveButton.disabled = true;
+      if (inputContainer) {
+        inputContainer.addEventListener("mouseenter", showEditButton);
       }
     });
   }

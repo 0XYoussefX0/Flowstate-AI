@@ -13,17 +13,35 @@
       />
       <div class="text-dark-grey text-sm font-medium">Flowstate AI</div>
     </div>
-    <div class="px-3 py-4 flex flex-col gap-2">
+    <form class="px-3 py-4 flex flex-col gap-2">
       <label for="goal" class="text-dark-grey text-sm font-medium pl-0.5">
         Describe Your Goal From Watching Youtube:
       </label>
-      <textarea
-        id="goal"
-        name="goal"
-        class="rounded-lg border border-solid border-[#E0E0E0] w-full p-4 font-medium text-sm h-[200px]"
-        placeholder="The more descriptive you are the better the results would be"
-      ></textarea>
-    </div>
+      <div class="relative" id="inputContainer">
+        <textarea
+          id="goal"
+          name="goal"
+          class="rounded-lg border border-solid border-[#E0E0E0] w-full p-4 font-medium text-sm h-[200px] disabled:bg-[#F2F2F2] disabled:text-[#BDBDBD]"
+          placeholder="The more descriptive you are the better the results would be"
+        ></textarea>
+        <button
+          id="editButton"
+          type="button"
+          class="absolute top-3.5 right-3.5 invisible"
+          aria-label="edit text area text"
+        >
+          <img src="./assets/editIcon.svg" alt="" />
+        </button>
+      </div>
+      <div class="flex justify-end">
+        <button
+          id="saveButton"
+          class="rounded-full h-10 w-20 font-medium text-sm text-white bg-dark-blue disabled:opacity-80"
+        >
+          Save
+        </button>
+      </div>
+    </form>
     <div class="h-[1px] bg-[#C1C7CE] mx-4"></div>
     <!-- this switch code was taken from the W3C -->
     <div class="flex justify-end px-3 py-6">

@@ -28,6 +28,10 @@
           shortsSections.forEach((shortSection) => {
             shortSection.remove();
           });
+          const shortReels = document.querySelector("ytd-reel-shelf-renderer");
+          if (shortReels) {
+            shortReels.remove();
+          }
         }
       }
     };
@@ -46,11 +50,10 @@
   }
 
   chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-    console.log(request);
     if (request.action === "shorts off") {
-      console.log("toz");
       removeShorts();
       sendResponse({ result: "deleted" });
+    } else if (request.type === "new video") {
     }
   });
 })();
