@@ -453,13 +453,13 @@ video {
 
   /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
 
-  font-family: 'Roboto';
+  font-family: "Roboto";
 
   font-style: normal;
 
   font-weight: 300;
 
-  src: url('../fonts/roboto-v30-latin-300.woff2') format('woff2');
+  src: url("../fonts/roboto-v30-latin-300.woff2") format("woff2");
 
   /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
@@ -471,13 +471,13 @@ video {
 
   /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
 
-  font-family: 'Roboto';
+  font-family: "Roboto";
 
   font-style: normal;
 
   font-weight: 400;
 
-  src: url('../fonts/roboto-v30-latin-regular.woff2') format('woff2');
+  src: url("../fonts/roboto-v30-latin-regular.woff2") format("woff2");
 
   /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
@@ -489,13 +489,13 @@ video {
 
   /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
 
-  font-family: 'Roboto';
+  font-family: "Roboto";
 
   font-style: normal;
 
   font-weight: 500;
 
-  src: url('../fonts/roboto-v30-latin-500.woff2') format('woff2');
+  src: url("../fonts/roboto-v30-latin-500.woff2") format("woff2");
 
   /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
@@ -507,13 +507,13 @@ video {
 
   /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
 
-  font-family: 'Roboto';
+  font-family: "Roboto";
 
   font-style: normal;
 
   font-weight: 700;
 
-  src: url('../fonts/roboto-v30-latin-700.woff2') format('woff2');
+  src: url("../fonts/roboto-v30-latin-700.woff2") format("woff2");
 
   /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
@@ -525,19 +525,19 @@ video {
 
   /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
 
-  font-family: 'Roboto';
+  font-family: "Roboto";
 
   font-style: normal;
 
   font-weight: 900;
 
-  src: url('../fonts/roboto-v30-latin-900.woff2') format('woff2');
+  src: url("../fonts/roboto-v30-latin-900.woff2") format("woff2");
 
   /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 
 body {
-  font-family: 'Roboto';
+  font-family: "Roboto";
 }
 
 *, ::before, ::after {
@@ -653,6 +653,10 @@ body {
   margin-right: 1rem;
 }
 
+.block {
+  display: block;
+}
+
 .flex {
   display: flex;
 }
@@ -764,8 +768,10 @@ body {
 }
 
 .item-list:hover > div {
-  background-color: #0C1D29;
+  background-color: #0c1d29;
 }
+
+/* this styling was also part of the code that i've copied from w3c and i've modified it */
 
 [role="switch"] {
   cursor: pointer;
