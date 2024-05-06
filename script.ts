@@ -13,6 +13,15 @@
     ) {
       for (const mutation of mutationsList) {
         if (mutation.addedNodes) {
+          const shortsLink = document.querySelector(
+            "#items > ytd-guide-entry-renderer:nth-child(2)"
+          );
+          if (
+            shortsLink &&
+            shortsLink.children[0].getAttribute("title") === "Shorts"
+          ) {
+            shortsLink.remove();
+          }
           const shortsSections = document.querySelectorAll(
             "ytd-rich-section-renderer"
           );
@@ -41,7 +50,7 @@
     if (request.action === "shorts off") {
       console.log("toz");
       removeShorts();
+      sendResponse({ result: "deleted" });
     }
-    sendResponse({ result: "deleted" });
   });
 })();
