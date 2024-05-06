@@ -4,7 +4,7 @@
     <script src="./popup.js" defer></script>
   </head>
   <body class="flex flex-col bg-light-blue w-[360px]">
-    <div class="flex gap-2 items-center px-7 py-6">
+    <div class="flex gap-2 items-center px-7 pt-6 pb-2">
       <img
         src="./assets/icon.png"
         alt="flowstate's logo"
@@ -13,38 +13,20 @@
       />
       <div class="text-dark-grey text-sm font-medium">Flowstate AI</div>
     </div>
-    <h1 class="text-dark-grey text-sm font-medium px-7">
-      Your Goals From Watching Youtube:
-    </h1>
-    <ul class="px-3 py-4">
-      <li
-        class="flex items-center gap-5 font-semibold text-sm text-dark-grey item-list hover:text-blackish px-5 py-4 hover:bg-blue-sky rounded-full"
-      >
-        <div class="bg-dark-grey h-3 w-3 rounded-full"></div>
-        Label
-      </li>
-      <li
-        class="flex items-center gap-5 font-semibold text-sm text-dark-grey item-list hover:text-blackish px-5 py-4 hover:bg-blue-sky rounded-full"
-      >
-        <div class="bg-dark-grey h-3 w-3 rounded-full"></div>
-        Label
-      </li>
-      <li
-        class="flex items-center gap-5 font-semibold text-sm text-dark-grey item-list hover:text-blackish px-5 py-4 hover:bg-blue-sky rounded-full"
-      >
-        <div class="bg-dark-grey h-3 w-3 rounded-full"></div>
-        Label
-      </li>
-      <li
-        class="flex items-center gap-5 font-semibold text-sm text-dark-grey item-list hover:text-blackish px-5 py-4 hover:bg-blue-sky rounded-full"
-      >
-        <div class="bg-dark-grey h-3 w-3 rounded-full"></div>
-        Label
-      </li>
-      <div class="h-[1px] bg-[#C1C7CE] mx-4"></div>
-    </ul>
+    <div class="px-3 py-4 flex flex-col gap-2">
+      <label for="goal" class="text-dark-grey text-sm font-medium pl-0.5">
+        Describe Your Goal From Watching Youtube:
+      </label>
+      <textarea
+        id="goal"
+        name="goal"
+        class="rounded-lg border border-solid border-[#E0E0E0] w-full p-4 font-medium text-sm h-[200px]"
+        placeholder="The more descriptive you are the better the results would be"
+      ></textarea>
+    </div>
+    <div class="h-[1px] bg-[#C1C7CE] mx-4"></div>
     <!-- this switch code was taken from the W3C -->
-    <div class="flex justify-end px-3 pb-6">
+    <div class="flex justify-end px-3 py-6">
       <div
         role="switch"
         id="switch"
