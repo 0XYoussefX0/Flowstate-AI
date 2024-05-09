@@ -16,3 +16,19 @@ chrome.tabs.onUpdated.addListener(async (tabId, tab) => {
     }
   }
 });
+
+//copied this code from stack overflow to ensure that the content script reruns everytime the url updates
+chrome.webNavigation.onHistoryStateUpdated.addListener(function (details) {
+  if (details.frameId === 0) {
+    // Fires only when details.url === currentTab.url
+    chrome.tabs.get(details.tabId, function (tab) {
+      if (tab.url === details.url && tab.url.includes("youtube.com")) {
+        if (tab.id) {
+          chrome.tabs.sendMessage(tab.id, {
+            type: "url changed",
+          });
+        }
+      }
+    });
+  }
+});

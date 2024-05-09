@@ -82,4 +82,9 @@
       }
     });
   }
+
+  if (input) {
+    const inputData = await chrome.storage.local.get("textInput");
+    input.value = inputData.textInput;
+  }
 })();
