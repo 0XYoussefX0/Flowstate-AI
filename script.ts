@@ -1,4 +1,6 @@
 (async () => {
+  const MAXIMUM_NUM_OF_CALLS = 10;
+
   const removeShortsLink = () => {
     const shortsLink = document.querySelector(
       "#items > ytd-guide-entry-renderer:nth-child(2)"
@@ -33,11 +35,17 @@
     }
   };
 
+  let numCallsRemoveSearchShorts = 0;
   const removeSearchShorts = () => {
+    numCallsRemoveSearchShorts++;
+    // if the shorts don't exist in the search page this will ensure that the function is not stuck in an infinite loop
+    if (numCallsRemoveSearchShorts === MAXIMUM_NUM_OF_CALLS) {
+      return;
+    }
     const shortReelsSections = document.querySelectorAll(
       "ytd-reel-shelf-renderer"
     );
-    if (shortReelsSections) {
+    if (shortReelsSections.length > 0) {
       shortReelsSections.forEach((shortReelSection) => {
         shortReelSection.remove();
       });
@@ -74,11 +82,17 @@
     }
   };
 
+  let numCallsRemoveHomePageShorts = 0;
   const removeHomePageShorts = () => {
+    numCallsRemoveHomePageShorts++;
+    // if the shorts don't exist in the search page this will ensure that the function is not stuck in an infinite loop
+    if (numCallsRemoveHomePageShorts === MAXIMUM_NUM_OF_CALLS) {
+      return;
+    }
     const shortsSections = document.querySelectorAll(
       "ytd-rich-section-renderer"
     );
-    if (shortsSections) {
+    if (shortsSections.length > 0) {
       shortsSections.forEach((shortSection) => {
         shortSection.remove();
       });
@@ -115,7 +129,13 @@
     }
   };
 
+  let numCallsRemoveWatchPageShorts = 0;
   const removeWatchPageShorts = () => {
+    numCallsRemoveWatchPageShorts++;
+    // if the shorts don't exist in the search page this will ensure that the function is not stuck in an infinite loop
+    if (numCallsRemoveWatchPageShorts === MAXIMUM_NUM_OF_CALLS) {
+      return;
+    }
     const shortReelsSections = document.querySelector(
       "ytd-reel-shelf-renderer"
     );
@@ -124,6 +144,25 @@
     } else {
       setTimeout(() => {
         removeWatchPageShorts();
+      }, 100);
+    }
+  };
+
+  let numCallsRemoveSubPageShorts = 0;
+  const removeSubPageShorts = () => {
+    numCallsRemoveSubPageShorts++;
+    // if the shorts don't exist in the search page this will ensure that the function is not stuck in an infinite loop
+    if (numCallsRemoveSubPageShorts === MAXIMUM_NUM_OF_CALLS) {
+      return;
+    }
+    const shortsSections = document.querySelectorAll(
+      "ytd-rich-section-renderer"
+    );
+    if (shortsSections.length > 1) {
+      shortsSections[1].remove();
+    } else {
+      setTimeout(() => {
+        removeSubPageShorts();
       }, 100);
     }
   };
@@ -139,14 +178,12 @@
     if (tabURL.includes("youtube.com/results")) {
       removeShortsButton();
       removeSearchShorts();
-    }
-
-    if (tabURL === "https://www.youtube.com/") {
+    } else if (tabURL === "https://www.youtube.com/") {
       removeHomePageShorts();
-    }
-
-    if (tabURL.includes("youtube.com/watch")) {
+    } else if (tabURL.includes("youtube.com/watch")) {
       removeWatchPageShorts();
+    } else if (tabURL === "https://www.youtube.com/feed/subscriptions") {
+      removeSubPageShorts();
     }
   };
 
@@ -205,6 +242,7 @@
 
     if (body) {
       body.append(modalWrapper, backdrop);
+      body.style.overflowY = "hidden";
     }
   };
 
@@ -214,34 +252,31 @@
         removeShorts();
         sendResponse({ result: "deleted" });
       } else if (request.type === "new video") {
-        // const response = await fetch(
-        //   `http://127.0.0.1:5000/youtube_transcript?videoId=${request.videoId}`
-        // );
-        // showModal(
-        //   "You're not allowed to watch that. Hey there, future piano virtuoso! Drop that video like a hot potato! We've got a grand plan, and it involves tickling those ivories, not watching videos about leverage. Leverage? Pfft, who needs it when you've got fingers ready to dance across piano keys like they're at a ballroom party? So, close that tab, shoo away any distractions, and let's get jamming! The only leverage you need right now is the kind that helps you lift your musical spirit higher. Now go on, show that piano who's boss! No more video distractions, just you and the keys! 🎹😄"
-        // );
-        // if (response.ok) {
-        //   const data = await response.json();
-        //   const inputData = await chrome.storage.local.get("textInput");
-        //   // perform client side validation to ensure that the inputs follow the format that the ai accepts
-        //   const requestBody = {
-        //     goal: inputData.textInput,
-        //     videoTranscript: data.transcript,
-        //   };
-        //   const geminiResponse = await fetch("http://127.0.0.1:5000/gemini", {
-        //     method: "POST",
-        //     headers: {
-        //       "Content-Type": "application/json",
-        //     },
-        //     body: JSON.stringify(requestBody),
-        //   });
-        //   if (response.ok) {
-        //     const geminiOutput = await geminiResponse.json();
-        //     if (geminiOutput.verdict === "Not Allowed") {
-        //       showModal(geminiOutput.encouragement);
-        //     }
-        //   }
-        // }
+        const response = await fetch(
+          `http://127.0.0.1:5000/youtube_transcript?videoId=${request.videoId}`
+        );
+        if (response.ok) {
+          const data = await response.json();
+          const inputData = await chrome.storage.local.get("textInput");
+
+          const requestBody = {
+            goal: inputData.textInput,
+            videoTranscript: data.transcript,
+          };
+          const geminiResponse = await fetch("http://127.0.0.1:5000/gemini", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(requestBody),
+          });
+          if (geminiResponse.ok) {
+            const geminiOutput = await geminiResponse.json();
+            if (geminiOutput.verdict === "Not Allowed") {
+              showModal(geminiOutput.encouragement);
+            }
+          }
+        }
       } else if (request.type === "url changed") {
         checkSwitchState();
       }

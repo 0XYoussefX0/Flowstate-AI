@@ -5,3 +5,5 @@
 /background.js
 /server/__pycache__
 /server/venv
+/server/client_secret.json
+/server/token.json
