@@ -250,31 +250,23 @@
     async (request, sender, sendResponse) => {
       if (request.action === "shorts off") {
         removeShorts();
-        sendResponse({ result: "deleted" });
       } else if (request.type === "new video") {
-        const response = await fetch(
-          `http://127.0.0.1:5000/youtube_transcript?videoId=${request.videoId}`
-        );
+        const inputData = await chrome.storage.local.get("textInput");
+        const requestBody = {
+          goal: inputData.textInput,
+          video_id: request.videoId,
+        };
+        const response = await fetch("http://127.0.0.1:5000/verdict", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(requestBody),
+        });
         if (response.ok) {
           const data = await response.json();
-          const inputData = await chrome.storage.local.get("textInput");
-
-          const requestBody = {
-            goal: inputData.textInput,
-            videoTranscript: data.transcript,
-          };
-          const geminiResponse = await fetch("http://127.0.0.1:5000/gemini", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(requestBody),
-          });
-          if (geminiResponse.ok) {
-            const geminiOutput = await geminiResponse.json();
-            if (geminiOutput.verdict === "Not Allowed") {
-              showModal(geminiOutput.encouragement);
-            }
+          if (data.verdict === "Not Allowed") {
+            showModal(data.encouragement);
           }
         }
       } else if (request.type === "url changed") {
@@ -283,5 +275,3 @@
     }
   );
 })();
-
-/* add the run at attribute in the manifest json file */
