@@ -18,7 +18,6 @@
   chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     if (request.action === "send user input") {
       if (input) {
-        console.log(input.value, "oga bonga");
         sendResponse(input.value);
       }
     }
@@ -26,13 +25,12 @@
 
   const switchElement = document.getElementById("switch");
 
-  /* some of the switch related code was also part of the code that i've copied from w3c and i've modified it */
+  /* some of the switch related code was copied from w3c and i've modified it */
   const sendMessage = async (state: boolean) => {
     const [tab] = await chrome.tabs.query({
       active: true,
       lastFocusedWindow: true,
     });
-    console.log(tab);
     if (tab?.id) {
       const response = await chrome.tabs.sendMessage(tab.id, {
         action: !state ? "shorts off" : "shorts on",

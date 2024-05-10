@@ -1,3 +1,4 @@
+# the code inside this file was copied from google's documentation
 import os.path
 
 from google.auth.transport.requests import Request
