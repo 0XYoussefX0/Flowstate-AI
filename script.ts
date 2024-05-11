@@ -1,5 +1,5 @@
 (async () => {
-  const MAXIMUM_NUM_OF_CALLS = 10;
+  const MAXIMUM_NUM_OF_CALLS = 60;
 
   const removeShortsLink = () => {
     const shortsLink = document.querySelector(
@@ -53,7 +53,7 @@
         "#contents.style-scope.ytd-section-list-renderer"
       );
       if (target) {
-        const config = { childList: true };
+        const config = { childList: true, subtree: true };
 
         const callback = function (
           mutationsList: MutationRecord[],
@@ -61,10 +61,10 @@
         ) {
           for (const mutation of mutationsList) {
             if (mutation.addedNodes) {
-              const shortReelsSections = document.querySelectorAll(
+              const shortReelsSections2 = document.querySelectorAll(
                 "ytd-reel-shelf-renderer"
               );
-              shortReelsSections.forEach((shortReelSection) => {
+              shortReelsSections2.forEach((shortReelSection) => {
                 shortReelSection.remove();
               });
             }
@@ -108,10 +108,10 @@
         ) {
           for (const mutation of mutationsList) {
             if (mutation.addedNodes) {
-              const shortsSections = document.querySelectorAll(
+              const shortsSections2 = document.querySelectorAll(
                 "ytd-rich-section-renderer"
               );
-              shortsSections.forEach((shortSection) => {
+              shortsSections2.forEach((shortSection) => {
                 shortSection.remove();
               });
             }
@@ -189,7 +189,6 @@
 
   const checkSwitchState = async () => {
     const initialState = await chrome.storage.local.get("switchState");
-    console.log(initialState.switchState);
     const initialStateIsFalse =
       Object.keys(initialState).length === 0 ||
       initialState?.switchState === false;
@@ -201,7 +200,6 @@
   checkSwitchState();
 
   const showModal = (encouragement: string): void => {
-    console.log(encouragement);
     // the next 5 lines were copied from ChatGPT
     const link = document.createElement("link");
     link.rel = "stylesheet";

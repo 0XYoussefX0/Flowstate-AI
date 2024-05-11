@@ -697,10 +697,6 @@ body {
   align-items: center;
 }
 
-.justify-end {
-  justify-content: flex-end;
-}
-
 .justify-between {
   justify-content: space-between;
 }
@@ -762,19 +758,9 @@ body {
   padding: 1.5rem;
 }
 
-.px-3 {
-  padding-left: 0.75rem;
-  padding-right: 0.75rem;
-}
-
 .px-6 {
   padding-left: 1.5rem;
   padding-right: 1.5rem;
-}
-
-.py-6 {
-  padding-top: 1.5rem;
-  padding-bottom: 1.5rem;
 }
 
 .pb-5 {
@@ -839,7 +825,7 @@ body {
   background-color: #0c1d29;
 }
 
-/* this styling was also part of the code that i've copied from w3c and i've modified it */
+/* this styling was copied from w3c and i've modified it */
 
 [role="switch"] {
   cursor: pointer;

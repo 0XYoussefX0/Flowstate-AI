@@ -10,9 +10,13 @@ chrome.tabs.onUpdated.addListener(async (tabId, tab) => {
     });
   } else if (tab.url && tab.url.includes("youtube.com/shorts")) {
     const state = await chrome.storage.local.get("switchState");
-    console.log(state);
     if (state.switchState === true) {
-      chrome.tabs.goBack(tabId);
+      try {
+        await chrome.tabs.goBack(tabId);
+      } catch (e) {
+        // i used chatgpt for the next line to find a method that will help me push the user to the home page if they have remove shorts switch turned on
+        chrome.tabs.update(tabId, { url: "https://www.youtube.com/" });
+      }
     }
   }
 });
