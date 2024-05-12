@@ -28,7 +28,7 @@
   position: relative;
   top: 50%;
   left: 50%;
-  transform: translateX(-50%) translateY(80%);
+  transform: translateX(-50%) translateY(50%);
   flex-direction: column;
   background-color: white;
   font-family: "Inter";

@@ -4,9 +4,14 @@ chrome.tabs.onUpdated.addListener(async (tabId, tab) => {
     const queryParameters = tab.url.split("?")[1];
     const urlParameters = new URLSearchParams(queryParameters);
 
-    chrome.tabs.sendMessage(tabId, {
-      type: "new video",
-      videoId: urlParameters.get("v"),
+    // got a little help with the syntax from gemini
+    chrome.tabs.onActivated.addListener((activeInfo) => {
+      if (activeInfo.tabId === tabId) {
+        chrome.tabs.sendMessage(tabId, {
+          type: "new video",
+          videoId: urlParameters.get("v"),
+        });
+      }
     });
   } else if (tab.url && tab.url.includes("youtube.com/shorts")) {
     const state = await chrome.storage.local.get("switchState");
