@@ -1,18 +1,37 @@
+let activeTabId: number;
+
+// got a little help with the syntax from gemini
+chrome.tabs.onActivated.addListener((activeInfo) => {
+  activeTabId = activeInfo.tabId;
+});
+
+const sendMessage = async (tabId: number, urlParameters: URLSearchParams) => {
+  console.log(activeTabId, tabId);
+  if (activeTabId === tabId) {
+    try {
+      await chrome.tabs.sendMessage(tabId, {
+        type: "new video",
+        videoId: urlParameters.get("v"),
+      });
+    } catch (e) {
+      setTimeout(() => {
+        sendMessage(tabId, urlParameters);
+      }, 200);
+    }
+  } else {
+    setTimeout(() => {
+      sendMessage(tabId, urlParameters);
+    }, 200);
+  }
+};
+
 // this code is copied from a tutorial on freecodecamp and i'm modified it
 chrome.tabs.onUpdated.addListener(async (tabId, tab) => {
   if (tab.url && tab.url.includes("youtube.com/watch")) {
     const queryParameters = tab.url.split("?")[1];
     const urlParameters = new URLSearchParams(queryParameters);
 
-    // got a little help with the syntax from gemini
-    chrome.tabs.onActivated.addListener((activeInfo) => {
-      if (activeInfo.tabId === tabId) {
-        chrome.tabs.sendMessage(tabId, {
-          type: "new video",
-          videoId: urlParameters.get("v"),
-        });
-      }
-    });
+    sendMessage(tabId, urlParameters);
   } else if (tab.url && tab.url.includes("youtube.com/shorts")) {
     const state = await chrome.storage.local.get("switchState");
     if (state.switchState === true) {
