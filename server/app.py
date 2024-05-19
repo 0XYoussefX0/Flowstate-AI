@@ -9,7 +9,7 @@ from load_creds import load_creds
 app = Flask(__name__)
 
 #next 5 lines are from chatgpt
-CORS(app, resources={r"/verdict": {"origins": "https://www.youtube.com", "methods": ["POST"]}})
+CORS(app, resources={r"/verdict": {"origins": "*", "methods": ["POST"]}})
 def chop_text(text, num_words=200):
     words = text.split()
     chopped_text = ' '.join(words[:num_words])

@@ -4,13 +4,19 @@
   "description": "Saving timestamps in YT videos",
   "permissions": ["storage", "tabs", "webNavigation"],
   "background": {
-    "service_worker": "background.js"
+    "service_worker": "background.js",
+    "persistent": true
   },
   "host_permissions": ["https://*.youtube.com/*", "http://127.0.0.1:5000/*"],
   "content_scripts": [
     {
       "matches": ["https://*.youtube.com/*"],
-      "js": ["script.js"]
+      "js": ["shorts.js"]
+    },
+    {
+      "matches": ["https://*.youtube.com/*"],
+      "js": ["verdict.js"],
+      "run_at": "document_start"
     }
   ],
   "web_accessible_resources": [

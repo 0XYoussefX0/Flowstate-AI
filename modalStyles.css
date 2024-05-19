@@ -23,7 +23,7 @@
   src: url("../fonts/inter-v13-latin-600.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 
-.modalWrapper {
+.modalWrapper_0907dad0-5e3e-45b6-9275-785aa0c25487 {
   display: flex;
   position: relative;
   top: 50%;
@@ -42,21 +42,21 @@
   z-index: 9999;
 }
 
-.modalWrapper > h1 {
+.modalWrapper_0907dad0-5e3e-45b6-9275-785aa0c25487 > h1 {
   margin-top: 8px;
   font-weight: 600;
   font-size: 18px;
   text-align: center;
   color: #101828;
 }
-.modalWrapper > p {
+.modalWrapper_0907dad0-5e3e-45b6-9275-785aa0c25487 > p {
   font-size: 14px;
   font-weight: 400;
   text-align: center;
   line-height: 20px;
   color: #475467;
 }
-.modalWrapper > a {
+.modalWrapper_0907dad0-5e3e-45b6-9275-785aa0c25487 > a {
   margin-top: 24px;
   background-color: #d92d20;
   color: white;
@@ -80,4 +80,8 @@
   left: 0;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 9998;
+}
+
+body {
+  overflow-y: hidden !important;
 }

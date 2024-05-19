@@ -199,74 +199,10 @@
 
   checkSwitchState();
 
-  const showModal = (encouragement: string): void => {
-    // the next 5 lines were copied from ChatGPT
-    const link = document.createElement("link");
-    link.rel = "stylesheet";
-    link.type = "text/css";
-    link.href = chrome.runtime.getURL("./modalStyles.css");
-    document.head.appendChild(link);
-
-    const body = document.querySelector("body");
-
-    const modalWrapper = document.createElement("div");
-    modalWrapper.classList.add("modalWrapper");
-
-    const backdrop = document.createElement("div");
-    backdrop.classList.add("backdrop");
-
-    const warningIcon = document.createElement("img");
-    warningIcon.src = chrome.runtime.getURL("./assets/warningIcon.svg");
-    warningIcon.alt = "";
-
-    const modalHeader = document.createElement("h1");
-    modalHeader.textContent = "You are not allowed to watch this.";
-
-    const modalParagraph = document.createElement("p");
-    modalParagraph.textContent = encouragement;
-
-    const modalLink = document.createElement("a");
-    modalLink.textContent = "Go back to the home page";
-    modalLink.href = "https://www.youtube.com";
-
-    const runningIcon = document.createElement("img");
-    runningIcon.src = chrome.runtime.getURL("./assets/runningIcon.png");
-    runningIcon.alt = "";
-    runningIcon.width = 20;
-    runningIcon.height = 20;
-    modalLink.appendChild(runningIcon);
-
-    modalWrapper.append(warningIcon, modalHeader, modalParagraph, modalLink);
-
-    if (body) {
-      body.append(modalWrapper, backdrop);
-      body.style.overflowY = "hidden";
-    }
-  };
-
   chrome.runtime.onMessage.addListener(
     async (request, sender, sendResponse) => {
       if (request.action === "shorts off") {
         removeShorts();
-      } else if (request.type === "new video") {
-        const inputData = await chrome.storage.local.get("textInput");
-        const requestBody = {
-          goal: inputData.textInput,
-          video_id: request.videoId,
-        };
-        const response = await fetch("http://127.0.0.1:5000/verdict", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(requestBody),
-        });
-        if (response.ok) {
-          const data = await response.json();
-          if (data.verdict === "Not Allowed") {
-            showModal(data.encouragement);
-          }
-        }
       } else if (request.type === "url changed") {
         checkSwitchState();
       }

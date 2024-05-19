@@ -1,5 +1,5 @@
 /node_modules
-/script.js
+/shorts.js
 /popup.js
 /output.css
 /background.js
@@ -7,3 +7,4 @@
 /server/venv
 /server/client_secret.json
 /server/token.json
+/verdict.js
