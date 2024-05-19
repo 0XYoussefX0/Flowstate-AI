@@ -194,3 +194,7 @@ chrome.tabs.onUpdated.addListener(async (tabId, changeInfo, tab) => {
     }
   }
 });
+
+// TODO: make the background script only run on youtube
+// TODO: make the server only accept requests from the background script
+// TODO: sometimes multiple messages are sent to the shorts script and that probably results in multiple observers being initialized, fix that
