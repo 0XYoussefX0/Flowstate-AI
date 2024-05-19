@@ -157,7 +157,6 @@ const handleVerdict = async (videoId: string | undefined, tabId: number) => {
       sendMessage(result.encouragement, tabId);
     }
     cache.insert(videoId, result);
-    console.log(cache);
   }
 };
 

@@ -10,7 +10,6 @@
     document.head.appendChild(link);
 
     const body = document.querySelector("body");
-    console.log(body);
 
     const modalWrapper = document.createElement("div");
     modalWrapper.classList.add(`modalWrapper_${HASH}`);
@@ -50,12 +49,10 @@
     const videoPlayer = document.querySelector(
       ".video-stream.html5-main-video"
     ) as HTMLVideoElement | null;
-    console.log(videoPlayer, "bideo");
     if (videoPlayer) {
       videoPlayer.pause();
       //this event listener is needed because some script inside youtube is playing the video after it is paused
       videoPlayer.addEventListener("playing", () => {
-        console.log("playiiing....");
         videoPlayer.pause();
       });
     }
@@ -67,7 +64,6 @@
         // check if there is already a modal in the current Page
         const modal = document.querySelector(`.modalWrapper_${HASH}`);
         if (!modal) {
-          console.log(request.encouragement, document.readyState);
           if (
             document.readyState === "interactive" ||
             document.readyState === "complete"
