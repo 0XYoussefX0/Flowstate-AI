@@ -9,7 +9,7 @@ is it blocks you from watching content that is irrelevant to the content that yo
 
 <div style="display: flex; justify-content:center">
    <video controls loop>
-     <source src="assets/Demo.mp4" type="video/mp4">
+     <source src="https://raw.githubusercontent.com/0XYoussefX0/Flowstate-AI/main/assets/Demo.mp4" type="video/mp4">
      Your browser does not support the video tag.
    </video>
 </div>
