@@ -179,8 +179,10 @@ chrome.tabs.onUpdated.addListener(async (tabId, changeInfo, tab) => {
   }
 
   if (changeInfo.status === "loading") {
-    const videoId = tab.url?.split("v=")[1];
-    handleVerdict(videoId, tabId);
+    if (tab.url?.includes("youtube.com")) {
+      const videoId = tab.url?.split("v=")[1];
+      handleVerdict(videoId, tabId);
+    }
   }
   if (tab.url && tab.url.includes("youtube.com/shorts")) {
     const state = await chrome.storage.local.get("switchState");
@@ -194,6 +196,5 @@ chrome.tabs.onUpdated.addListener(async (tabId, changeInfo, tab) => {
   }
 });
 
-// TODO: make the background script only run on youtube
 // TODO: make the server only accept requests from the background script
 // TODO: sometimes multiple messages are sent to the shorts script and that probably results in multiple observers being initialized, fix that

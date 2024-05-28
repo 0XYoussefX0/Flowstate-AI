@@ -87,3 +87,52 @@ def getVerdict():
        encouragement = " ".join(responseWords[4:]) 
    
     return {"verdict": verdict, "encouragement": encouragement}
+
+
+#TODO: give more context to the ai by getting the video title and channel name, and train it such that it responds in the way you want it to, and give it 750 words from the transcript instead of 200
+# from googleapiclient.discovery import build
+# # Replace with your YouTube Data API v3 key
+# API_KEY = "AIzaSyDymYqVWJGD_CqfX7s_78ayd10aAufIHYI"
+# def first_750_words(text):
+#     words = text.split()
+#     if len(words) <= 750:
+#         return text
+#     else:
+#         return ' '.join(words[:750])
+# model = genai.GenerativeModel(model_name="tunedModels/accountability-coach-2-lvjem5olzq1c",
+#                               generation_config=generation_config,
+#                               safety_settings=safety_settings)
+# def get_video_info(video_id):
+#   youtube = build("youtube", "v3", developerKey=API_KEY)
+
+#   # Retrieve video information
+#   request = youtube.videos().list(
+#       part="snippet",  # Include snippet for title
+#       id=video_id,
+#   )
+#   response = request.execute()
+
+#   # Check for errors
+#   if len(response["items"]) == 0:
+#     print("No video found for the provided ID.")
+#     return None, None
+
+#   video_title = response["items"][0]["snippet"]["title"]
+#   channel_title = response["items"][0]["snippet"]["channelTitle"]
+
+#   return video_title, channel_title
+
+#     transcriptSnippet = first_750_words(formatted)
+
+#     try:
+#         video_title, channel_name = get_video_info(video_id)
+#     except:
+#         return "Failed to get video information", 500
+
+#     prompt = f"Goal: {goal} \nChannel Name: {channel_name} \nVideo Title: {video_title} \nVideo Transcript Snippet: {transcriptSnippet}"
+
+
+
+
+
+
