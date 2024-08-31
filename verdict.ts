@@ -60,7 +60,7 @@
 
   chrome.runtime.onMessage.addListener(
     async (request, sender, sendResponse) => {
-      if (request.type === "Not Allowed") {
+      if (!request.relevant) {
         // check if there is already a modal in the current Page
         const modal = document.querySelector(`.modalWrapper_${HASH}`);
         if (!modal) {
