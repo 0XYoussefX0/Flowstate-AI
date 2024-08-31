@@ -2,17 +2,9 @@
 
 ## What is Flowstate AI
 
-Flowstate ai is an extention that helps you stay focused when you are surfing youtube, so how it does that
-is by giving you the option to remove shorts from appearing while you are surfing youtube and even if you happen
-to click on one through a link somewhere, you won't be able to watch that short, the second thing that it does
-is it blocks you from watching content that is irrelevant to the content that you had the intention to watch prior to being sucked by the youtube algorithm, for example let's say someone wants to learn about software engineering, so there is an input inside the extention where you can specify that, and then the extention does the work by getting the transcript of the video that you are currently watching, sends it to an ai model that was tuned for this exact task, gets back the response of whether you are allowed to watch that content or not, if you aren't allowed to watch it, a modal will appear that says you're not allowed to watch that type of content with a message from the AI, forgot to mention that the extention doesn't work when the youtube video has no subtitles ( it works for the auto generated ones ).
+Flowstate AI is an extension that helps you stay focused while surfing YouTube. It works by giving you the option to remove shorts from appearing, and even if you click on one through a link, you won't be able to watch it. Additionally, it blocks content that is irrelevant to what you intended to watch before getting distracted by the YouTube algorithm. For example, if you want to learn about software engineering, you can specify this in the extension. It then analyzes the transcript of the video you are watching, sends it to an AI model fine-tuned for this task, and determines whether the content is relevant. If it’s not, a modal will appear with a message from the AI stating that you are not allowed to watch that type of content. Note that the extension doesn't work if the YouTube video has no subtitles, though it does support auto-generated ones.
 
-<div style="display: flex; justify-content:center">
-   <video controls loop>
-     <source src="assets/Demo.mp4" type="video/mp4">
-     Your browser does not support the video tag.
-   </video>
-</div>
+![Demo-e](https://github.com/0XYoussefX0/Flowstate-AI/assets/151054138/48ed9533-7a50-453d-a549-8c480e638f93)
 
 ## Project Structure
 
