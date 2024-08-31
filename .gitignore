@@ -10,4 +10,4 @@
 /verdict.js
 /styles.css
 /data.csv
-/server/.env
+server/.env.local
